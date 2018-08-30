@@ -178,8 +178,12 @@ void createChild(){
     if(genesis->next == NULL)
         genesis->next= child;
     else{
-        Node *ptr=
-        while()
+        Node *ptr = *genesis;
+        while(ptr->next != NULL){
+            ptr = ptr->next;
+        }
+
+        ptr->next = child;
     }
 
     nodeNumber++;
