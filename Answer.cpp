@@ -39,7 +39,7 @@ string returnTimestamp(date ts){
 }
 
 bool checkParentValue(float value){
-
+// parent value should be greater or equal to the total sum value of its child node
 }
 
 string convertValue(float value){
@@ -87,6 +87,28 @@ string setData(string ownerId, string ownerName, float value){
 string setHashValue(date timestamp, string data, int nodeNumber, string nodeId, string referenceNodeId, string childReferenceNodeId, string genesisReferenceNodeId){
 // for setting the values
 
+}
+
+string encrypt(string toEncrypt){
+// for encryption of data for any node
+    char key = 'K';
+    string output = toEncrypt;
+
+    for (int i = 0; i < toEncrypt.size(); i++)
+        output[i] = toEncrypt[i] ^ key;
+
+    return output;
+}
+
+string decrypt(string toDecrypt){
+// fro decryption of any node
+    char key[3] = {'K', 'C', 'Q'};
+    string output = toDecrypt;
+
+    for (int i = 0; i < toDecrypt.size(); i++)
+        output[i] = toDecrypt[i] ^ key[i % (sizeof(key) / sizeof(char))];
+
+    return output;
 }
 
 void createGenesis(){
@@ -153,7 +175,12 @@ void createChild(){
 
     child->next = NULL;
 
-    genesis->next= child;
+    if(genesis->next == NULL)
+        genesis->next= child;
+    else{
+        Node *ptr=
+        while()
+    }
 
     nodeNumber++;
 }
@@ -186,9 +213,9 @@ int main(){
                 break();
         case 3: createGenesis();
                 break();
-        case 4: createGenesis();
+        case 4: encrypt(toEncrypt);
                 break();
-        case 5: createGenesis();
+        case 5: decrypt(toDecrypt);
                 break();
         case 6: createGenesis();
                 break();
